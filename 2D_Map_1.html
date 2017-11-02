@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<link rel="icon" type="png" href="https://imgur.com/vbps8s2.png" sizes="32x32">
+<head>
+    <meta charset='utf-8' />
+    <title>CoDe 1230</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+    <script src='./data1.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:80%; }
+        sidebar { position:fixed; Left: 80%; padding: 1%; textalign:left; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoidGltdGFtOTk5IiwiYSI6ImNqNnZuYXk3azE0MzYzM3Bkd2cycGlzdTcifQ.7I95t0QHXTvS55R9ZhRHVQ';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/timtam999/cj6vnehfn8cym2rrqxmer7jbu', // stylesheet location
+    center: [151.209900, -33.865143], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+
+map.on('load', function () {
+
+    map.addLayer({
+        'id': 'data1',
+        'type': 'fill',
+        'source': {
+            'type': 'geojson',
+            'data': data1
+        },
+        'layout': {},
+        'paint': {
+            
+            // 'fill-color': '#088',
+
+            'fill-color': {
+                'property': 'perc14-29',
+                "stops": [
+                 [0, 'black'],
+                 [0.15, 'purple'],
+                 [0.3, 'orange']
+                 ]
+            }
+            // "stops": [
+            //     [0, 'black']
+            //     [1, 'orange']
+            //     ]
+
+        }
+    });
+});
+</script>
+
+
+</body>
+</html>
+
+<sidebar>
+
+<font face = "Sommet" size =" 6">% OF FEMALES WHO DO UNPAID DOMESTIC WORK PER WEEK</font><br />
+<br>
+<br>
+<font face = "Sommet" size =" 5">The intention of this map is to specifically highlight the latte line as there is a significant change in the gradient to illustrate more hours of unpaid domestic work being done on the latte drinking side and less hours on the other side. This means that the people who can afford to stay at home and do unpaid work live on the north-east side of Sydney, and this is compared against those on the south-west who are at home doing more work. <br><br> The gradient is represented as orange being the most hours and black being 0 with purple being in between. </font><br />
+
+</sidebar>
+
+</body>
+</html>

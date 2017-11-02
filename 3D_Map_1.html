@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<link rel="icon" type="png" href="https://imgur.com/vbps8s2.png" sizes="32x32">
+<head>
+    <meta charset='utf-8' />
+    <title>CoDe 1230</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
+    <script src='./income_2.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:80%; }
+        sidebar { position:fixed; Left: 80%; padding: 1%; textalign:left; }
+    </style>
+    </style>
+</head>
+<body>
+
+<div id='map'>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoidGltdGFtOTk5IiwiYSI6ImNqNnZuYXk3azE0MzYzM3Bkd2cycGlzdTcifQ.7I95t0QHXTvS55R9ZhRHVQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/timtam999/cj6vnehfn8cym2rrqxmer7jbu',
+    center: [151.209900, -33.865143],
+    zoom: 10,
+    pitch: 40,
+    bearing: -30
+});
+
+map.on('load', function() {
+
+    map.addLayer({
+        'id': 'room-extrusion',
+        'type': 'fill-extrusion',
+        'source': {
+            // Geojson Data source used in vector tiles, documented at
+            // https://gist.github.com/ryanbaumann/a7d970386ce59d11c16278b90dde094d
+            'type': 'geojson',
+            'data': income_2
+        },
+        'paint': {
+            // See the Mapbox Style Spec for details on property functions
+            // https://www.mapbox.com/mapbox-gl-style-spec/#types-function
+            'fill-extrusion-color': {
+                // Get the fill-extrusion-color from the source 'color' property.
+                'property': 'perc14-29',
+                "stops": [
+                [0, 'black'],
+                [0.15, 'purple'],
+                [0.3, 'orange']
+                ]
+            },
+            'fill-extrusion-height': {
+                // Get fill-extrusion-height from the source 'height' property.
+                'property': 'Total',
+                "stops": [
+                [0, 0],
+                [10000, 65535]
+                ]
+            },
+            // Make extrusions slightly opaque for see through indoor walls.
+            'fill-extrusion-opacity': 0.9
+        }
+    });
+});
+</script>
+
+</body>
+</html>
+
+<sidebar>
+
+<font face = "Sommet" size =" 6">UNPAID DOMESTIC WORK AND WEEKLY INCOME</font><br />
+<br>
+<br>
+<font face = "Sommet" size =" 5">This map shows a similar trend except on a larger scale. <br><br> It provides more context to the claim that the richer suburbs spend more time doing unpaid domestic work than poorer suburbs.</font><br />
+
+</sidebar>
+
+</body>
+</html>
