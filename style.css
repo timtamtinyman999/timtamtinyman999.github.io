@@ -107,7 +107,7 @@ body {
 	background: white;  /* fallback for old browsers */
 	color: white;
 	text-align: center;
-	font-family: Sommet;
+	font-family: Helvetica;
 	font-size: 24px;
 	margin: 0;
 	padding: 0px;
@@ -127,7 +127,7 @@ body {
 } 
 
 body {
-	font-family: Sommet;
+	font-family: Helvetica;
 	margin: 0;
 	padding: 0;
 
