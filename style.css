@@ -107,7 +107,7 @@ body {
 	background: white;  /* fallback for old browsers */
 	color: white;
 	text-align: center;
-	font-family: Helvetica;
+	font-family: Arial;
 	font-size: 24px;
 	margin: 0;
 	padding: 0px;
@@ -127,7 +127,7 @@ body {
 } 
 
 body {
-	font-family: Helvetica;
+	font-family: Arial;
 	margin: 0;
 	padding: 0;
 
